@@ -2,6 +2,7 @@ package me.nick.sfw;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -12,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 import jakarta.annotation.PostConstruct;
 
 @Component
-public class UserService implements InitializingBean, DisposableBean{
+public class UserService implements InitializingBean, DisposableBean, SmartInitializingSingleton{
 
     private Amdin admin;
 
@@ -64,5 +65,10 @@ public class UserService implements InitializingBean, DisposableBean{
     @Override
     public void destroy() throws Exception {
         System.out.println("Destory userService bean");
+    }
+
+    @Override
+    public void afterSingletonsInstantiated() {
+        System.out.println("after singletons instantiated...");
     }
 }
