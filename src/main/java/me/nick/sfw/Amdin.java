@@ -2,7 +2,7 @@ package me.nick.sfw;
 
 import org.springframework.stereotype.Component;
 
-@Component
+// @Component
 public class Amdin {
 
     private String name;

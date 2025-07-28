@@ -5,14 +5,17 @@ import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.annotation.Scope;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+
 import jakarta.annotation.PostConstruct;
 
 @Component
+@Scope("prototype")
 public class UserService implements InitializingBean, DisposableBean, SmartInitializingSingleton{
 
     private Amdin admin;
@@ -23,6 +26,13 @@ public class UserService implements InitializingBean, DisposableBean, SmartIniti
 
     @Autowired
     private UserService userService;
+
+    @Autowired
+    private static AdminTest adminTest;
+
+    public void test() {
+        System.out.println(adminTest);
+    }
 
     public UserService(Amdin admin, @Qualifier("orderService2") OrderService orderService, JdbcTemplate jdbcTemplate) {
         this.admin = admin;

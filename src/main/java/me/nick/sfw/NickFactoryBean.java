@@ -19,4 +19,9 @@ public class NickFactoryBean implements FactoryBean {
         return Amdin.class;
     }
 
+    @Override
+    public boolean isSingleton() {
+        return false;
+    }
+
 }
