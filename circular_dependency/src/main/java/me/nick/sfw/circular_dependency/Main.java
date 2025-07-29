@@ -8,7 +8,7 @@ public class Main {
     public static void main(String[] args) {
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
         ctx.register(AppConfig.class);
-        ctx.setAllowCircularReferences(false); //disable Circular Dependency
+        //ctx.setAllowCircularReferences(false); //disable Circular Dependency
         ctx.refresh();
         AService aService = (AService) ctx.getBean("AService");
         aService.test();
