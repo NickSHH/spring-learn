@@ -1,5 +1,8 @@
 package me.nick.sfw;
 
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
+
 /**
  * 
 1. 确保接口是函数式接口
@@ -21,11 +24,14 @@ public class LambdaTest {
         System.out.println(c.printStr(a, b));
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         LambdaTest lambdaTest = new LambdaTest();
         lambdaTest.test("Hello", "World", (String a, String b) -> {
             return a+" "+b;
         });
-
+        Method method = LambdaTest.class.getMethod("test", String.class, String.class, PrintOp.class);
+        for (Parameter parameter : method.getParameters()) {
+            System.out.println(parameter.getName());
+        }
     }
 }
