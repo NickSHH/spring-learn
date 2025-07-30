@@ -1,4 +1,4 @@
-package me.nick.sfw.circular_dependency.aspect;
+package me.nick.sfw.aop.aspect;
 
 import org.aopalliance.intercept.Joinpoint;
 import org.aspectj.lang.annotation.Aspect;
