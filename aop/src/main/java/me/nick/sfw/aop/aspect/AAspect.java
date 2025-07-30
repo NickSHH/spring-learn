@@ -1,16 +1,22 @@
 package me.nick.sfw.aop.aspect;
 
-import org.aopalliance.intercept.Joinpoint;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Component;
 
 @Component
 @Aspect
 public class AAspect {
 
-    @Before("execution(public void me.nick.sfw.circular_dependency.service.AService.test())")
-    public void aBefore(Joinpoint joinpoint) {
-        System.out.println("A Aspect");
-    }
+	@Pointcut("execution(public void me.nick.sfw.aop.service.OrderService.test())")
+	public void a(){
+
+	}
+
+	@Before("a()")
+	public void zhouyuBefore(JoinPoint joinPoint) {
+		System.out.println("A Aspect");
+	}
 }
