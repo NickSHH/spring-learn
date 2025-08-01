@@ -11,6 +11,7 @@
     <modules>
         <module>circular_dependency</module>
         <module>aop</module>
+        <module>mvc</module>
     </modules>
 
     <properties>
